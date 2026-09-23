@@ -7,10 +7,6 @@
 #define GPIOA_MODER (AHB2_GPIOA)
 #define GPIOA_ODR (AHB2_GPIOA | 0x14)
 
-*(volatile uint32_t*) RCC_AHB2_ENR  |= 0x1;
-*(volatile uint32_t*) GPIOA_MODER &= ~(0x3 << 10);
-*(volatile uint32_t*) GPIOA_MODER |= (0x1 << 10);
-
 void delay(volatile uint32_t count) {
     while(count--) {
         __asm__("nop");
@@ -18,6 +14,9 @@ void delay(volatile uint32_t count) {
 }
 
 int main() {
+    *(volatile uint32_t*) RCC_AHB2_ENR  |= 0x1;
+    *(volatile uint32_t*) GPIOA_MODER &= ~(0x3 << 10);
+    *(volatile uint32_t*) GPIOA_MODER |= (0x1 << 10);
     while (true) {
         *(volatile uint32_t*) GPIOA_ODR |= (0x1 << 5); // LED ON
         delay(1000);
