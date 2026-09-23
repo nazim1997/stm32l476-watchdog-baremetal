@@ -1,3 +1,6 @@
+#include <stdint.h>
+#include <stdbool.h>
+
 #define RCC_AHB1_BASE 0x40021000
 #define RCC_AHB2_ENR (RCC_AHB1_BASE | 0x4C)
 #define AHB2_GPIOA 0x48000000
