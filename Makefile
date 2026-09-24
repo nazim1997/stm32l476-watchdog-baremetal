@@ -10,7 +10,7 @@ objects = main.o startup_stm32l476.o
 
 all: $(objects)
   $(CC)gcc $(CC_FLAGS) $(LD_FLAGS) $(objects) -o firmware.elf
-  $(CC)gcc -O binary firmware.elf firmware.bin
+  $(CC)objcopy -O binary firmware.elf firmware.bin
 
 main.o:
   $(CC)gcc $(CC_FLAGS) -c main.c -o main.o
