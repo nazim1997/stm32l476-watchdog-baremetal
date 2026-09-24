@@ -19,4 +19,4 @@ startup_stm32l476.o:
   $(CC)gcc $(CC_FLAGS) -c startup_stm32l476.c -o startup_stm32l476.o
 
 clean:
-  rm -f *.o firmware.elf
+  rm -f *.o firmware.elf firmware.bin
