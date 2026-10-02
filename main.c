@@ -19,8 +19,8 @@ int main() {
     *(volatile uint32_t*) GPIOA_MODER |= (0x1 << 10);
     while (true) {
         *(volatile uint32_t*) GPIOA_ODR |= (0x1 << 5); // LED ON
-        delay(1000);
+        delay(50000);
         *(volatile uint32_t*) GPIOA_ODR &= ~(0x1 << 5); // LED OFF
-        delay(1000);
+        delay(50000);
     }
 }
