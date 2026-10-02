@@ -6,7 +6,7 @@ CC_FLAGS  = -mcpu=cortex-m4
 CC_FLAGS += -mthumb
 CC_FLAGS += -mfloat-abi=soft
 
-objects = main.o startup.o
+objects = main.o startup_stm32l476.o
 
 all: $(objects)
         $(CC) $(CC_FLAGS) $(LD_FLAGS) $(objects) -o firmware.elf
@@ -15,8 +15,8 @@ all: $(objects)
 main.o:
         $(CC) $(CC_FLAGS) -c main.c -o main.o
 
-startup.o: startup.c
-        $(CC) $(CC_FLAGS) -c startup.c -o startup.o
+startup_stm32l476.o: startup_stm32l476.c
+        $(CC) $(CC_FLAGS) -c startup_stm32l476.c -o startup_stm32l476.o
 
 flash:
         st-flash --reset write firmware.bin 0x08000000
