@@ -31,7 +31,7 @@ void delay_ms(volatile uint32_t count) {
     }
     *(volatile uint32_t*) STK_LOAD = count;
     *(volatile uint32_t*) STK_VAL = 0x0;
-    while ((*(volatile uint32_t*) STK_CTRL) & (1 << 16));
+    while (!((*(volatile uint32_t*) STK_CTRL) & (1 << 16)));
 }
 
 void iwdg_init() {
