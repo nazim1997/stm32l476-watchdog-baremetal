@@ -50,9 +50,11 @@ void gpio_init() {
 
 void led_blink() {
     *(volatile uint32_t*) GPIOA_ODR |= (0x1 << 5); // LED ON
-    delay_ms(4000);
+    delay_ms(500);
+    iwdg_feed();
     *(volatile uint32_t*) GPIOA_ODR &= ~(0x1 << 5); // LED OFF
-    delay_ms(4000);
+    delay_ms(500);
+    iwdg_feed();
 }
 
 
